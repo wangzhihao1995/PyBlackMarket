@@ -143,6 +143,10 @@ class RetryError(BlackMarketError):
     _error = Error(1500, 'Need retry somehow', 402)
 
 
+class DownstreamConnectionError(BlackMarketError):
+    _error = Error(1500, 'DownstreamConnectionError', 500)
+
+
 # 第三方服务异常
 class WeChatServiceError(BlackMarketError):
     _error = Error(4000, 'WeChat Service Error', 403)

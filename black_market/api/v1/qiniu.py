@@ -13,7 +13,7 @@ from black_market.model.file.photo import FilePhoto
 from black_market.model.exceptions import UserNotFoundError
 
 
-bp = create_blueprint('qiniu', 'v1', __name__, url_prefix='/qiniu')
+bp = create_blueprint('qiniu', __name__, url_prefix='/qiniu')
 
 
 @bp.route('/token', methods=['POST'])
@@ -39,7 +39,7 @@ def callback():
     hash = data.get('hash')
     photo = FilePhoto.get_by_file_name(key)
     if not photo:
-        raise
+        raise Exception
     photo.update(filesize=filesize, hash=hash)
     UserBehavior.add(photo.user_id, UserBehaviorType.upload_photo, dict(key=key))
     return normal_jsonify()

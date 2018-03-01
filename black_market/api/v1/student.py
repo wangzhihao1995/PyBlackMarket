@@ -18,7 +18,7 @@ from black_market.model.post.course import CoursePost
 from black_market.model.post.consts import OrderType
 from black_market.model.utils import validator
 
-bp = create_blueprint('student', 'v1', __name__, url_prefix='/student')
+bp = create_blueprint('student', __name__, url_prefix='/student')
 
 
 @bp.route('/', methods=['GET'])

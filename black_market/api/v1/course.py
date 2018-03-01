@@ -5,7 +5,7 @@ from black_market.api.utils import normal_jsonify
 from black_market.api.decorator import require_session_key
 from black_market.model.course import Course
 
-bp = create_blueprint('course', 'v1', __name__, url_prefix='/course')
+bp = create_blueprint('course', __name__, url_prefix='/course')
 
 
 @bp.route('/<int:course_id>', methods=['GET'])

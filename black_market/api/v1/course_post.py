@@ -16,7 +16,7 @@ from black_market.api.schema.post import (
     UpdateCoursePostStatusSchema, GetCoursePostSchema,
     DecrRemainingViewCountSchema)
 
-bp = create_blueprint('course.post', 'v1', __name__, url_prefix='/course/post')
+bp = create_blueprint('course.post', __name__, url_prefix='/course/post')
 
 
 @bp.route('/', methods=['GET'])

@@ -15,7 +15,7 @@ from black_market.service.image.share_me import create_share_me_image
 from black_market.service.image.share_post import create_share_post_image
 from .._bp import create_blueprint
 
-bp = create_blueprint('share', 'v1', __name__, url_prefix='/share')
+bp = create_blueprint('share', __name__, url_prefix='/share')
 
 
 @bp.route('/post', methods=['POST'])

@@ -18,6 +18,7 @@ from envcfg.json.black_market import QINIU_ACCESS_KEY
 from envcfg.json.black_market import QINIU_SECRET_KEY
 from envcfg.json.black_market import QINIU_BUCKET
 from envcfg.json.black_market import QINIU_DOMAIN
+from envcfg.json.black_market import DOWN_STREAM_URL
 
 
 APP = 'black_market'
@@ -47,4 +48,5 @@ __all__ = [
     'QINIU_SECRET_KEY',
     'QINIU_BUCKET',
     'QINIU_DOMAIN',
+    'DOWN_STREAM_URL'
 ]
