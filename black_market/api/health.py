@@ -13,3 +13,10 @@ def health():
 def downstream_health():
     r = get_downstream("/health")
     return jsonify(r.json()), r.status_code
+
+
+@bp.route('/downstream', methods=['POST'])
+def ttt():
+    from black_market.api.utils import post_downstream
+    r = post_downstream("/health")
+    return jsonify(r.json()), r.status_code

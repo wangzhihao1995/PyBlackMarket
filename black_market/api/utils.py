@@ -1,4 +1,4 @@
-import requests
+import requests, json
 from flask import jsonify, request
 
 from requests.exceptions import ConnectionError
@@ -22,7 +22,7 @@ def get_downstream(route):
 
 def post_downstream(route):
     try:
-        r = requests.post(DOWN_STREAM_URL + route, data=request.json, headers=request.headers)
+        r = requests.post(DOWN_STREAM_URL + route, data=json.dumps(request.json), headers=request.headers)
     except ConnectionError:
         raise DownstreamConnectionError
     return r
@@ -30,7 +30,7 @@ def post_downstream(route):
 
 def put_downstream(route):
     try:
-        r = requests.put(DOWN_STREAM_URL + route, data=request.json, headers=request.headers)
+        r = requests.put(DOWN_STREAM_URL + route, data=json.dumps(request.json), headers=request.headers)
     except ConnectionError:
         raise DownstreamConnectionError
     return r

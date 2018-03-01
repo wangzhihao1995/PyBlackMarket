@@ -1,24 +1,17 @@
-from flask import abort
-
+from flask import jsonify
 from .._bp import create_blueprint
-from black_market.api.utils import normal_jsonify
-from black_market.api.decorator import require_session_key
-from black_market.model.course import Course
+from black_market.api.utils import get_downstream
 
 bp = create_blueprint('course', __name__, url_prefix='/course')
 
 
-@bp.route('/<int:course_id>', methods=['GET'])
-@require_session_key()
-def get_course(course_id):
-    course = Course.get(course_id)
-    if course:
-        return normal_jsonify(course.dump())
-    abort(404)
-
-
 @bp.route('/', methods=['GET'])
-@require_session_key()
 def get_courses():
-    courses = Course.get_all()
-    return normal_jsonify([course.dump() for course in courses])
+    r = get_downstream("/api/course")
+    return jsonify(r.json()), r.status_code
+
+
+@bp.route('/<int:course_id>', methods=['GET'])
+def get_course(course_id):
+    r = get_downstream("/api/course/" + course_id)
+    return jsonify(r.json()), r.status_code
