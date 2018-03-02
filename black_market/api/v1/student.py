@@ -37,13 +37,13 @@ def send_register_code():
 
 @bp.route('/<int:student_id>', methods=['GET'])
 def get_student_by_id(student_id):
-    r = get_downstream("/api/student/" + student_id)
+    r = get_downstream("/api/student/" + str(student_id))
     return jsonify(r.json()), r.status_code
 
 
 @bp.route('/<int:student_id>/post', methods=['GET'])
 def get_student_post_list_by_student_id(student_id):
-    r = get_downstream("/api/student/" + student_id + "/post")
+    r = get_downstream("/api/student/" + str(student_id) + "/post")
     return jsonify(r.json()), r.status_code
 
 
