@@ -33,7 +33,7 @@ class SMS(object):
             try:
                 if int(code) == 0:
                     return True
-            except:
+            except Exception:
                 return False
         return False
 

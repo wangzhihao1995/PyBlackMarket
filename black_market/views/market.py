@@ -1,8 +1,6 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template
 
-from black_market.libs.cache.redis import mc, rd2
-from black_market.api.utils import normal_jsonify
-from black_market.config import RAW_SALT
+from black_market.libs.cache.redis import rd2
 
 bp = Blueprint('market', __name__)
 

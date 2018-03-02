@@ -7,4 +7,5 @@ bp = Blueprint('errors', __name__)
 
 @bp.app_errorhandler(BlackMarketError)
 def handle_biz_error(error):
-    return jsonify(error=dict(message=error.message, code=error.code, type="BlackMarketError")), error.http_status_code
+    return jsonify(error=dict(message=error.message, code=error.code,
+                              type="BlackMarketError")), error.http_status_code
