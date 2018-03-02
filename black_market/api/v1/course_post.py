@@ -23,13 +23,13 @@ def get_my_course_post():
     return jsonify(r.json()), r.status_code
 
 
-@bp.route('/<int:post_id>', methods=['GET'])
+@bp.route('/<int:course_post_id>', methods=['GET'])
 def get_course_post_by_id(course_post_id):
-    r = get_downstream("/api/course/post" + course_post_id)
+    r = get_downstream("/api/course/post/" + course_post_id)
     return jsonify(r.json()), r.status_code
 
 
-@bp.route('/<int:post_id>', methods=['PUT'])
+@bp.route('/<int:course_post_id>', methods=['PUT'])
 def update_course_post_by_id(course_post_id):
-    r = put_downstream("/api/course/post" + course_post_id)
+    r = put_downstream("/api/course/post/" + course_post_id)
     return jsonify(r.json()), r.status_code

@@ -24,13 +24,13 @@ def get_my_goods_post():
     return jsonify(r.json()), r.status_code
 
 
-@bp.route('/<int:post_id>', methods=['GET'])
+@bp.route('/<int:goods_post_id>', methods=['GET'])
 def get_goods_post_by_id(goods_post_id):
-    r = get_downstream("/api/goods/post" + goods_post_id)
+    r = get_downstream("/api/goods/post/" + goods_post_id)
     return jsonify(r.json()), r.status_code
 
 
-@bp.route('/<int:post_id>', methods=['PUT'])
+@bp.route('/<int:goods_post_id>', methods=['PUT'])
 def update_goods_post_by_id(goods_post_id):
-    r = put_downstream("/api/goods/post" + goods_post_id)
+    r = put_downstream("/api/goods/post/" + goods_post_id)
     return jsonify(r.json()), r.status_code
