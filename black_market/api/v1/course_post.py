@@ -33,3 +33,15 @@ def get_course_post_by_id(course_post_id):
 def update_course_post_by_id(course_post_id):
     r = put_downstream("/api/course/post/" + str(course_post_id))
     return jsonify(r.json()), r.status_code
+
+
+@bp.route('/viewcount', methods=['GET'])
+def get_remaining_view_contact_count():
+    r = get_downstream("/api/course/post/viewcount")
+    return jsonify(r.json()), r.status_code
+
+
+@bp.route('/viewcount', methods=['PUT'])
+def view_course_post_contact():
+    r = put_downstream("/api/course/post/viewcount")
+    return jsonify(r.json()), r.status_code
