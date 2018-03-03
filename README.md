@@ -1,5 +1,5 @@
 # PyBlackMarket
-Black Market Website & Some Non-core Service written in Python
+PyBlackMarket includes [Black Market Website](https://pkublackmarket.cn/) & Simple API Gateway & Non-core services written in Python
 
 ## [BlackMarket](https://github.com/wangzhihao1995/BlackMarket) ![](https://travis-ci.org/wangzhihao1995/BlackMarket.svg?branch=master) [![codecov](https://codecov.io/gh/wangzhihao1995/BlackMarket/branch/master/graph/badge.svg)](https://codecov.io/gh/wangzhihao1995/BlackMarket)
 
@@ -17,9 +17,9 @@ The next version Black Market is under development. ![](https://travis-ci.org/wa
 
 It's really easy. Open WeChat App, then scan the QRCodes below.
 
-![](src/main/resources/static/img/app-qrcode.jpg)
+![](https://github.com/wangzhihao1995/BlackMarket/blob/master/src/main/resources/static/img/app-qrcode.jpg)
 
-![](src/main/resources/static/img/qrcode.jpg)
+![](https://github.com/wangzhihao1995/BlackMarket/blob/master/src/main/resources/static/img/qrcode.jpg)
 
 ### ABOUT BLACK MARKET
 
