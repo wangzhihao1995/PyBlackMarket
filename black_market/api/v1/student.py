@@ -49,5 +49,5 @@ def get_student_post_list_by_student_id(student_id):
 
 @bp.route('/share/profile/<int:student_id>', methods=['GET'])
 def get_student_share_profile(student_id):
-    r = get_downstream("/api/student/share/profile" + str(student_id))
+    r = get_downstream("/api/student/share/profile/" + str(student_id))
     return jsonify(r.json()), r.status_code
