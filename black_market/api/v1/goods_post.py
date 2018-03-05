@@ -34,3 +34,15 @@ def get_goods_post_by_id(goods_post_id):
 def update_goods_post_by_id(goods_post_id):
     r = put_downstream("/api/goods/post/" + str(goods_post_id))
     return jsonify(r.json()), r.status_code
+
+
+@bp.route('/viewcount', methods=['GET'])
+def get_remaining_view_contact_count():
+    r = get_downstream("/api/goods/post/viewcount")
+    return jsonify(r.json()), r.status_code
+
+
+@bp.route('/viewcount', methods=['PUT'])
+def view_goods_post_contact():
+    r = put_downstream("/api/goods/post/viewcount")
+    return jsonify(r.json()), r.status_code
