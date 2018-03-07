@@ -17,7 +17,8 @@ def index():
     if page_view % 17 == 0:
         url = DOWN_STREAM_URL + "/index/pageview/" + str(page_view)
         r = requests.put(url).json()
-        page_view = r.get("page_view")
+        page_view = int(r.get("page_view"))
+        rd2.set(index_page_view_count_cache_key, page_view)
     return render_template('index.html', page_view=page_view)
 
 
