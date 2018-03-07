@@ -1,6 +1,9 @@
+import requests
 from flask import Blueprint, render_template
 
 from black_market.libs.cache.redis import rd2
+from black_market.config import DOWN_STREAM_URL
+
 
 bp = Blueprint('market', __name__)
 
@@ -11,6 +14,10 @@ index_page_view_count_cache_key = 'black:market:index:page:view'
 def index():
     rd2.incr(index_page_view_count_cache_key)
     page_view = int(rd2.get(index_page_view_count_cache_key))
+    if page_view % 17 == 0:
+        url = DOWN_STREAM_URL + "/index/pageview/" + str(page_view)
+        r = requests.put(url).json()
+        page_view = r.get("page_view")
     return render_template('index.html', page_view=page_view)
 
 
