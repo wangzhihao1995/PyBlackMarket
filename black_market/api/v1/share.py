@@ -8,8 +8,6 @@ from black_market.model.post.consts import PostType
 from black_market.model.post.course import CoursePost
 from black_market.model.course import Course
 from black_market.model.user.student import Student
-from black_market.model.user.behavior import UserBehavior
-from black_market.model.user.consts import UserBehaviorType
 from black_market.model.exceptions import UserNotFoundError, PostNotFoundError
 from black_market.service.image.share_me import create_share_me_image
 from black_market.service.image.share_post import create_share_post_image
@@ -26,10 +24,6 @@ def share_post():
     post_type = PostType(data.get('post_type'))
     student_id = data.get('student_id', 0)
     detail = dict(post_id=post_id, student_id=student_id)
-    if post_type is PostType.course_post:
-        UserBehavior.add(student_id, UserBehaviorType.share_course_post, detail)
-    elif post_type is PostType.goods_post:
-        UserBehavior.add(student_id, UserBehaviorType.share_goods_post, detail)
     return normal_jsonify()
 
 
@@ -37,7 +31,6 @@ def share_post():
 def share_student():
     data = ShareStudentSchema().fill()
     student_id = data.get('student_id')
-    UserBehavior.add(student_id, UserBehaviorType.share_me_to_friend)
     return normal_jsonify()
 
 
@@ -48,11 +41,8 @@ def get_share_student_image(student_id):
     student = Student.get(student_id)
     if not student:
         raise UserNotFoundError()
-
     img_io = create_share_me_image(student, path)
     img_io.seek(0)
-
-    UserBehavior.add(student_id, UserBehaviorType.get_share_me_image)
     return send_file(img_io, mimetype='image/jpeg')
 
 
@@ -60,7 +50,7 @@ def get_share_student_image(student_id):
 def get_share_post_image(post_id):
     data = GetSharePostImageSchema().fill()
 
-    path = data.get('path', 'pages/splash/splash')
+    path = data.get('path', 'pages/common/splash/splash')
     supply = data.get('supply', None)
     demand = data.get('demand', None)
     student_id = data.get('student_id', None)
@@ -83,6 +73,4 @@ def get_share_post_image(post_id):
 
     img_io = create_share_post_image(student, path, supply_course_name, demand_course_name)
     img_io.seek(0)
-
-    UserBehavior.add(student_id or student.id, UserBehaviorType.get_share_course_post_image)
     return send_file(img_io, mimetype='image/jpeg')
