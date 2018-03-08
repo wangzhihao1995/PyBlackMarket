@@ -107,7 +107,7 @@ class Student(db.Model):
 
     @property
     def username(self):
-        return self.name if self.name else self.wechat_user.nickname
+        return self.name if self.name else self.wechat_user.nick_name
 
     @property
     def posts(self, limit=10, offset=0):
